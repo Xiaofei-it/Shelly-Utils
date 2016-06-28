@@ -18,6 +18,8 @@
 
 package xiaofei.library.shellyutils;
 
+import android.support.v4.util.Pair;
+
 import retrofit2.Response;
 import xiaofei.library.shelly.Domino;
 import xiaofei.library.shelly.DominoConverter;
@@ -27,9 +29,9 @@ import xiaofei.library.shelly.util.Triple;
  * Created by Xiaofei on 16/6/28.
  */
 public class RetrofitDominoConverter2<T, R> implements
-        DominoConverter<T, Triple<Boolean, Response<R>, Throwable>, RetrofitDomino<T, R>> {
+        DominoConverter<T, Triple<Boolean, Pair<T, Response<R>>, Throwable>, RetrofitDomino2<T, R>> {
     @Override
-    public RetrofitDomino<T, R> convert(Domino<T, Triple<Boolean, Response<R>, Throwable>> domino) {
-        return new RetrofitDomino<T, R>(domino.getLabel(), domino.getPlayer());
+    public RetrofitDomino2<T, R> convert(Domino<T, Triple<Boolean, Pair<T, Response<R>>, Throwable>> domino) {
+        return new RetrofitDomino2<T, R>(domino.getLabel(), domino.getPlayer());
     }
 }
