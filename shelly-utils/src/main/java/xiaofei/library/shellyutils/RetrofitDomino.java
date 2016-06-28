@@ -341,7 +341,7 @@ public class RetrofitDomino<T, R> extends TaskDomino<T, Response<R>, Throwable> 
                             public Scheduler<Triple<Boolean, Response<R>, Throwable>> call(List<Triple<Boolean, Response<R>, Throwable>> input) {
                                 boolean failure = false;
                                 for (Triple<Boolean, Response<R>, Throwable> triple : input) {
-                                    if (triple.first && triple.second.isSuccessful() && triple.second.body() != null) {
+                                    if (responseFailure(triple)) {
                                         failure = true;
                                         break;
                                     }
